@@ -7,7 +7,7 @@ import { portfolioPhotos, photosByCategory, categoryLabels } from '@/content/pro
 
 export default function HomePage() {
   // Hero: klassieke gang met paneelwerk (heel premium beeld)
-  const heroPhoto = portfolioPhotos.find(p => p.src === '/images/topwood-10.jpg') || portfolioPhotos[0]
+  const heroPhoto = portfolioPhotos.find(p => p.src === '/images/topwood-23.jpg') || portfolioPhotos[0]
 
   // Featured projecten: uitgekozen sterke beelden
   const featured = [
