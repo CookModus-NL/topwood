@@ -1,8 +1,6 @@
 /**
  * TOPWOOD — bouwbedrijf van Angelo Alings.
- * Full-service: nieuwbouw, renovatie, restauratie, interieur.
- *
- * Placeholder gegevens — Angelo/Bart vult definitief in.
+ * Premium interieurbouw + renovatie + houtwerk. Vinkeveen (Utrecht).
  */
 
 export const business = {
@@ -12,32 +10,29 @@ export const business = {
   ownerFullName: 'Angelo Alings',
   tagline: 'Wij maken alles.',
   shortDescription:
-    'Bouwbedrijf TOPWOOD verzorgt nieuwbouw, renovatie, restauratie en interieurbouw. Van fundering tot afwerking, één vaste partij door het hele project.',
+    'Premium bouwbedrijf voor nieuwbouw, renovatie, restauratie en maatwerk interieur. Van ruwbouw tot laatste plint, één ploeg door het hele project.',
   longDescription:
-    'TOPWOOD is het bouwbedrijf van Angelo Alings. Wij bouwen nieuw, renoveren oud, restaureren monumentaal en werken uit tot in het interieurdetail. Eén ploeg, één planning, één aanspreekpunt — van slopen en funderen tot maatwerk keukens en trappen.',
+    'TOPWOOD is het bouwbedrijf van Angelo Alings. Wij bouwen nieuw, renoveren oud, restaureren monumentaal en werken uit tot in het interieurdetail — inclusief maatwerk boekenkasten, kookeilanden, epoxy bladen en badkamers op maat. Eén ploeg, één planning, één aanspreekpunt — van fundering tot laatste plint.',
 
   categories: ['Nieuwbouw', 'Renovatie', 'Restauratie', 'Interieur'] as const,
 
   kvk: '',
-  vestigingsnummer: '',
-  btw: '',
   founded: '2020',
 
   address: {
-    street: '',
-    postalCode: '',
-    city: 'Breda',
-    municipality: '',
-    province: 'Noord-Brabant',
+    street: 'Muijeveld 81',
+    postalCode: '3645 KM',
+    city: 'Vinkeveen',
+    municipality: 'De Ronde Venen',
+    province: 'Utrecht',
     country: 'NL',
   },
   visitByAppointmentOnly: true,
 
-  phone: '',
-  phoneE164: '',
-  whatsapp: '',
+  phone: '06 83 56 46 50',
+  phoneE164: '+31683564650',
+  whatsapp: '+31683564650',
   email: 'info@topwood.nl',
-
   url: 'https://topwood.nl',
 
   openingHours: [
@@ -57,9 +52,14 @@ export const business = {
   },
 
   region: {
-    primary: 'West-Brabant',
-    cities: ['Breda', 'Etten-Leur', 'Oosterhout', 'Prinsenbeek', 'Ulvenhout', 'Bavel', 'Ginneken', 'Teteringen', 'Zundert', 'Made', 'Roosendaal', 'Rijen'],
-    province: 'Noord-Brabant',
+    primary: 'Vinkeveen en Randstad',
+    cities: [
+      'Vinkeveen', 'Mijdrecht', 'Wilnis', 'Abcoude', 'De Ronde Venen',
+      'Amsterdam', 'Amstelveen', 'Uithoorn', 'Aalsmeer',
+      'Utrecht', 'Woerden', 'Breukelen', 'Loenen aan de Vecht',
+      'Hilversum', 'Baarn',
+    ],
+    province: 'Utrecht',
     country: 'NL',
   },
 } as const

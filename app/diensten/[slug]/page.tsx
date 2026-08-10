@@ -3,7 +3,8 @@ import { notFound } from 'next/navigation'
 import { ArrowUpRight, Check } from 'lucide-react'
 import type { Metadata } from 'next'
 import { services, servicesBySlug } from '@/content/services'
-import { projectsByCategory } from '@/content/projects'
+import { photosByCategory } from '@/content/projects'
+
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -23,7 +24,7 @@ export default async function ServicePage({ params }: Props) {
   const s = servicesBySlug[slug]
   if (!s) notFound()
   const Icon = s.icon
-  const relatedProjects = projectsByCategory[s.slug] || []
+  const relatedProjects = photosByCategory[s.slug] || []
   const otherServices = services.filter((x) => x.slug !== s.slug)
 
   return (
@@ -84,16 +85,11 @@ export default async function ServicePage({ params }: Props) {
             <div className="eyebrow text-sand-300">Recent {s.label.toLowerCase()} werk</div>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5">
               {relatedProjects.slice(0, 3).map((p) => (
-                <Link key={p.slug} href="/projecten" className="group frame-thin aspect-[4/5] relative overflow-hidden bg-ink-800">
-                  <div className="absolute inset-0 bg-gradient-to-br from-ink-800 to-ink-900" />
-                  <div className="absolute inset-0 opacity-20" style={{
-                    backgroundImage: 'repeating-linear-gradient(45deg, transparent 0, transparent 10px, rgba(212,169,124,0.3) 10px, rgba(212,169,124,0.3) 11px)',
-                  }} />
+                <Link key={p.src} href="/projecten" className="group frame-thin aspect-[4/5] relative overflow-hidden bg-ink-800">
+                  <img src={p.src} alt={p.caption} className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-transparent to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-6">
-                    <div className="font-display font-bold text-lg text-sand-300">{p.title}</div>
-                    <div className="mt-1 text-[10.5px] font-display tracking-[0.24em] uppercase text-ink-300">
-                      {p.location} · {p.year}
-                    </div>
+                    <div className="font-display font-medium text-sm text-sand-300">{p.caption}</div>
                   </div>
                 </Link>
               ))}
