@@ -1,28 +1,27 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import type { Metadata } from 'next'
-import { photosByCategory, categoryLabels } from '@/content/projects'
+import { portfolioPhotos, photosByCategory, categoryLabels } from '@/content/projects'
 
 export const metadata: Metadata = {
-  title: 'Projecten',
-  description: 'Portfolio van TOPWOOD: nieuwbouw, renovatie, restauratie en maatwerk interieur — uit Vinkeveen en heel de Randstad.',
+  title: 'Werk',
+  description: 'Portfolio van TOPWOOD: nieuwbouw, renovatie, restauratie en maatwerk interieur uit Vinkeveen en heel de Randstad.',
 }
 
-const categoryOrder: (keyof typeof photosByCategory)[] = ['nieuwbouw', 'renovatie', 'restauratie', 'interieur']
+const categoryOrder: (keyof typeof photosByCategory)[] = ['interieur', 'renovatie', 'nieuwbouw', 'restauratie']
 
 export default function ProjectenPage() {
   return (
     <>
-      <section className="pt-24 lg:pt-32 pb-16 border-b border-ink-800">
+      <section className="pt-40 pb-24 lg:pt-48 lg:pb-32 border-b border-ink-700/40">
         <div className="container-x">
-          <div className="eyebrow text-sand-300">Portfolio</div>
-          <h1 className="mt-8 font-display font-bold text-[46px] sm:text-[72px] lg:text-[100px] leading-[0.95] tracking-tight text-ink-50 max-w-5xl">
-            Van tekening<br /><span className="text-sand-300">naar realiteit</span>.
+          <div className="eyebrow">Portfolio · {portfolioPhotos.length} projecten</div>
+          <h1 className="h-hero mt-8 text-ink-50 max-w-5xl">
+            Werk<br /><span className="italic font-light text-sand-300">in beeld.</span>
           </h1>
-          <p className="mt-8 text-[17px] leading-[1.7] text-ink-200 max-w-2xl">
-            Selectie van recent werk. Voor context per project of vergelijkbare wensen — 
-            <Link href="/contact" className="text-sand-300 hover:text-sand-100 ml-1">overleg vrijblijvend</Link>.
+          <p className="mt-10 text-[17px] leading-[1.7] text-ink-100 max-w-xl">
+            Selectie van recent werk uit Vinkeveen en heel de Randstad — van houtskelet dakopbouw tot maatwerk boekenkast, van complete badkamer tot chevron parket.
           </p>
         </div>
       </section>
@@ -31,24 +30,26 @@ export default function ProjectenPage() {
         const photos = photosByCategory[cat]
         if (!photos?.length) return null
         return (
-          <section key={cat} className="py-16 lg:py-20 border-b border-ink-800">
+          <section key={cat} className="py-20 lg:py-28 border-b border-ink-700/40">
             <div className="container-x">
-              <div className="flex items-baseline justify-between mb-8 gap-4">
-                <h2 className="font-display font-bold text-3xl lg:text-5xl tracking-tight text-ink-50">
-                  {categoryLabels[cat]}
-                </h2>
-                <span className="font-display text-[11px] tracking-[0.22em] uppercase text-sand-300 shrink-0">
-                  {photos.length} projecten
-                </span>
+              <div className="grid grid-cols-12 gap-8 mb-12 lg:mb-16 items-baseline">
+                <div className="col-span-12 lg:col-span-6">
+                  <div className="eyebrow">{String(categoryOrder.indexOf(cat) + 1).padStart(2, '0')} — {photos.length} projecten</div>
+                  <h2 className="h-section mt-6 text-ink-50">{categoryLabels[cat]}</h2>
+                </div>
+                <div className="col-span-12 lg:col-span-4 lg:col-start-9 lg:pt-8">
+                  <Link href={`/diensten/${cat}`} className="btn pl-0">Over {cat} <ArrowRight className="h-3.5 w-3.5" /></Link>
+                </div>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3 lg:gap-4">
                 {photos.map((p) => (
-                  <figure key={p.src} className="group relative aspect-[4/5] overflow-hidden frame-thin bg-ink-900">
+                  <figure key={p.src} className="group relative aspect-[4/5] overflow-hidden bg-ink-800 zoom-on-hover">
                     <Image src={p.src} alt={p.caption} fill
                            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                           className="object-cover transition-transform duration-[900ms] group-hover:scale-105" />
-                    <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-950/90 via-ink-950/30 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <span className="text-[12px] text-sand-300 font-medium">{p.caption}</span>
+                           className="object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <figcaption className="absolute inset-x-0 bottom-0 p-4 lg:p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <span className="font-display text-[13px] text-sand-300 font-medium">{p.caption}</span>
                     </figcaption>
                   </figure>
                 ))}
@@ -58,12 +59,15 @@ export default function ProjectenPage() {
         )
       })}
 
-      <section className="py-24">
+      <section className="py-32 lg:py-48">
         <div className="container-x text-center">
-          <h2 className="font-display font-bold text-3xl lg:text-5xl text-ink-50">
-            Volgende project<br /><span className="text-sand-300 italic font-medium">is het jouwe?</span>
+          <div className="eyebrow">Contact</div>
+          <h2 className="h-section mt-6 text-ink-50 max-w-3xl mx-auto">
+            Volgend project?<br /><span className="italic font-light text-sand-300">Bel Angelo direct.</span>
           </h2>
-          <Link href="/contact" className="btn btn-solid mt-10 inline-flex">Aanvraag doen <ArrowUpRight className="h-4 w-4" /></Link>
+          <div className="mt-10">
+            <Link href="/contact" className="btn">Aanvraag doen <ArrowRight className="h-3.5 w-3.5" /></Link>
+          </div>
         </div>
       </section>
     </>
