@@ -1,0 +1,165 @@
+@import "tailwindcss";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
+@import "@fontsource-variable/inter/index.css";
+
+/* ═══════════════════════════════════════════ TOPWOOD design system ═══
+   Bold minimalist. Zwart + zand/sand tan. Geometrische sans-serif.
+   Rechthoek-omkadering als brand element.
+*/
+@theme {
+  /* Base */
+  --color-ink-950: #060606;   /* pure black-adjacent */
+  --color-ink-900: #0A0A0A;   /* logo black */
+  --color-ink-800: #151515;
+  --color-ink-700: #232323;
+  --color-ink-500: #454545;
+  --color-ink-300: #8A8A8A;
+  --color-ink-200: #B5B5B5;
+  --color-ink-100: #DADADA;
+  --color-ink-50:  #EFEFEF;
+
+  /* Sand — brand accent */
+  --color-sand-50:  #F5EDE1;
+  --color-sand-100: #EBD9BE;
+  --color-sand-200: #E0C298;
+  --color-sand-300: #D4A97C;   /* SIGNATURE (uit het logo) */
+  --color-sand-400: #B88E63;
+  --color-sand-500: #97724F;
+  --color-sand-600: #6D5137;
+
+  /* Cream — voor lichte secties */
+  --color-cream: #F7F1E7;
+  --color-paper: #FAFAF7;
+
+  /* Fonts */
+  --font-display: 'Poppins', 'Futura', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter Variable', system-ui, sans-serif;
+
+  /* Motion */
+  --ease-out-elegant: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Global */
+html {
+  scroll-behavior: smooth;
+  background: var(--color-ink-950);
+  color-scheme: dark;
+}
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink-50);
+  background: var(--color-ink-950);
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--color-sand-300); color: var(--color-ink-950); }
+
+/* ═══════════════════════════════════════════ UTILITIES ═══ */
+.container-x { max-width: 1440px; margin: 0 auto; padding-inline: 1.25rem; }
+@media (min-width: 1024px) { .container-x { padding-inline: 4rem; } }
+
+.font-display { font-family: var(--font-display); }
+
+/* Framed rectangle — de signature brand element (uit het logo) */
+.frame-thin {
+  border: 2px solid var(--color-sand-300);
+}
+.frame-thick {
+  border: 3px solid var(--color-sand-300);
+}
+.frame-ink {
+  border: 2px solid var(--color-ink-900);
+}
+
+/* Eyebrow */
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Meta pill (voor category, jaar, locatie) */
+.meta-pill {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Button — matches logo style: rechthoek met dikke rand */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  padding: 1rem 1.6rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  border: 2px solid var(--color-sand-300);
+  color: var(--color-sand-300);
+  background: transparent;
+  transition: all 220ms var(--ease-out-elegant);
+}
+.btn:hover {
+  background: var(--color-sand-300);
+  color: var(--color-ink-950);
+}
+.btn-solid {
+  background: var(--color-sand-300);
+  color: var(--color-ink-950);
+}
+.btn-solid:hover {
+  background: var(--color-sand-100);
+  border-color: var(--color-sand-100);
+}
+.btn-inverse {
+  border-color: var(--color-ink-900);
+  color: var(--color-ink-900);
+}
+.btn-inverse:hover {
+  background: var(--color-ink-900);
+  color: var(--color-sand-300);
+}
+
+/* Category tag (klein pill onder foto's) */
+.cat-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1.5px solid var(--color-sand-300);
+  color: var(--color-sand-300);
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Reveal animatie */
+@keyframes reveal {
+  from { opacity: 0; transform: translate3d(0, 24px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.reveal { animation: reveal 900ms var(--ease-out-elegant) both; }
+
+/* Grain overlay */
+.grain::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 30% 20%, rgba(212,169,124,0.05) 0.5px, transparent 1.5px),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,0.02) 0.5px, transparent 1.5px);
+  background-size: 4px 4px, 6px 6px;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid var(--color-sand-300);
+  outline-offset: 3px;
+}
