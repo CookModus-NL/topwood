@@ -6,7 +6,7 @@ import { business } from '@/content/business'
 
 export const metadata: Metadata = {
   title: 'Over Angelo',
-  description: 'Angelo Alings — de bouwer achter TOPWOOD. Vinkeveen. Vakmanschap, eigen ploeg, één handschrift van fundering tot afwerking.',
+  description: 'Angelo Alings, de bouwer achter TOPWOOD. Vinkeveen. Vakmanschap, eigen ploeg, één handschrift van fundering tot afwerking.',
 }
 
 export default function OverPage() {
@@ -21,7 +21,7 @@ export default function OverPage() {
               <span className="italic font-light text-sand-300">Alings.</span>
             </h1>
             <p className="mt-10 text-[19px] lg:text-[22px] leading-[1.5] italic font-light text-ink-100 max-w-xl">
-              De bouwer achter TOPWOOD. Van fundering tot laatste plint — één handschrift.
+              De bouwer achter TOPWOOD. Van fundering tot laatste plint. Één handschrift.
             </p>
           </div>
           <div className="col-span-12 lg:col-span-5">
@@ -41,7 +41,7 @@ export default function OverPage() {
               in gedachten heeft, en niks minder.
             </p>
             <p>
-              Vandaag is TOPWOOD gegroeid — een vaste ploeg, vaste installateurs, vaste
+              Vandaag is TOPWOOD gegroeid. Een vaste ploeg, vaste installateurs, vaste
               interieurmakers. Maar de aanpak is gelijk gebleven: één aanspreekpunt, één
               verantwoordelijke, één handschrift door het hele project.
             </p>
@@ -50,11 +50,11 @@ export default function OverPage() {
             </p>
             <p>
               Wij bouwen zowel volledig nieuw als verbouwen bestaande woningen. Wij restaureren
-              monumentale panden en werken uit tot in het interieurdetail — inclusief epoxy tafelbladen,
+              monumentale panden en werken uit tot in het interieurdetail. Inclusief epoxy tafelbladen,
               maatwerk boekenkasten met verweerde achterwanden, complete badkamers in marble en zwart.
             </p>
             <p>
-              Werkgebied: {business.address.city} en heel de Randstad — Amsterdam, Utrecht, Amstelveen,
+              Werkgebied: {business.address.city} en heel de Randstad. Amsterdam, Utrecht, Amstelveen,
               Woerden en alles daartussen. Voor grote projecten door heel Nederland op aanvraag.
             </p>
           </div>

@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 
@@ -23,13 +24,18 @@ export function Header() {
   ]
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-ink-950/90 backdrop-blur-md border-b border-ink-700/40' : ''}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-ink-950/92 backdrop-blur-md border-b border-ink-700/40' : ''}`}>
       <div className="container-x flex h-20 items-center justify-between">
-        <Link href="/" className="group inline-flex items-baseline gap-3">
-          <span className="font-display font-semibold text-[18px] tracking-[0.28em] text-ink-50 group-hover:text-sand-300 transition-colors">
-            TOPWOOD
-          </span>
-          <span className="hidden sm:inline font-display text-[9.5px] tracking-[0.24em] uppercase text-ink-300">— Bouwbedrijf</span>
+        {/* Compact logo image (24px hoog) */}
+        <Link href="/" aria-label="Topwood home" className="block group">
+          <Image
+            src="/logo/topwood-banner.jpg"
+            alt="Topwood bouwbedrijf"
+            width={220}
+            height={101}
+            className="h-10 w-auto opacity-90 group-hover:opacity-100 transition-opacity"
+            priority
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">

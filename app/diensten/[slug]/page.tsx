@@ -38,7 +38,7 @@ export default async function ServicePage({ params }: Props) {
           </>
         )}
         <div className="absolute inset-x-0 bottom-0 container-x pb-16 lg:pb-24">
-          <div className="eyebrow">Diensten — {s.label}</div>
+          <div className="eyebrow">{s.label}</div>
           <h1 className="h-hero mt-8 text-ink-50 max-w-4xl">{s.headline}</h1>
         </div>
       </section>

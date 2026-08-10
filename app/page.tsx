@@ -6,22 +6,35 @@ import { services } from '@/content/services'
 import { portfolioPhotos, photosByCategory, categoryLabels } from '@/content/projects'
 
 export default function HomePage() {
-  // Hero: klassieke gang met paneelwerk (heel premium beeld)
   const heroPhoto = portfolioPhotos.find(p => p.src === '/images/topwood-23.jpg') || portfolioPhotos[0]
-
-  // Featured projecten: uitgekozen sterke beelden
   const featured = [
-    portfolioPhotos.find(p => p.src === '/images/topwood-10.jpg'), // Klassieke gang paneelwerk (portrait, past goed in 70vh)
-    portfolioPhotos.find(p => p.src === '/images/topwood-14.jpg'), // Luxe badkamer
-    portfolioPhotos.find(p => p.src === '/images/topwood-45.jpg'), // Boekenkast verweerd
-    portfolioPhotos.find(p => p.src === '/images/topwood-01.jpg'), // Zwarte gevel
-    portfolioPhotos.find(p => p.src === '/images/topwood-38.jpg'), // Chevron eiken vloer
+    portfolioPhotos.find(p => p.src === '/images/topwood-14.jpg'),
+    portfolioPhotos.find(p => p.src === '/images/topwood-45.jpg'),
+    portfolioPhotos.find(p => p.src === '/images/topwood-01.jpg'),
+    portfolioPhotos.find(p => p.src === '/images/topwood-38.jpg'),
+    portfolioPhotos.find(p => p.src === '/images/topwood-19.jpg'),
   ].filter(Boolean)
 
   return (
     <>
-      {/* ═══════════════════════════════ HERO — full-bleed foto ═══ */}
-      <section className="relative h-screen min-h-[720px] overflow-hidden">
+      {/* Logo banner centered bovenaan */}
+      <section className="pt-32 lg:pt-40 pb-16 lg:pb-24">
+        <div className="container-x flex justify-center">
+          <div className="reveal w-full max-w-4xl">
+            <Image
+              src="/logo/topwood-banner.jpg"
+              alt="Bouwbedrijf Topwood, wij maken alles"
+              width={2048}
+              height={943}
+              priority
+              className="w-full h-auto"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Hero foto full-bleed */}
+      <section className="relative h-[85vh] min-h-[600px] overflow-hidden">
         <Image
           src={heroPhoto!.src}
           alt={heroPhoto!.caption}
@@ -29,42 +42,30 @@ export default function HomePage() {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/30 via-transparent to-ink-950/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink-950/90" />
 
-        {/* Hero content — minimaal, klein linksboven & rechtsonder */}
-        <div className="absolute inset-0 flex flex-col justify-between">
-          <div className="container-x pt-32 lg:pt-40">
-            <div className="reveal max-w-4xl">
-              <div className="eyebrow">Bouwbedrijf · Vinkeveen · Sinds {business.founded}</div>
-              <h1 className="h-hero mt-8 text-ink-50">
+        <div className="absolute inset-x-0 bottom-0 container-x pb-14 lg:pb-20">
+          <div className="grid grid-cols-12 gap-8 items-end">
+            <div className="col-span-12 lg:col-span-7">
+              <div className="eyebrow">Bouwbedrijf Vinkeveen. Sinds {business.founded}</div>
+              <h1 className="h-hero mt-6 text-ink-50">
                 Wij maken<br />
-                <span className="italic font-light">alles.</span>
+                <span className="italic font-light text-sand-300">alles.</span>
               </h1>
             </div>
-          </div>
-
-          <div className="container-x pb-16">
-            <div className="grid grid-cols-12 gap-8 items-end">
-              <div className="col-span-12 lg:col-span-6 reveal-slow">
-                <p className="text-[16px] lg:text-[18px] leading-[1.7] text-ink-100 max-w-md">
-                  {business.longDescription}
-                </p>
-              </div>
-              <div className="col-span-12 lg:col-span-4 lg:col-start-9 flex flex-col sm:flex-row gap-4 lg:justify-end reveal-slow">
-                <Link href="/projecten" className="btn">Bekijk het werk <ArrowRight className="h-3.5 w-3.5" /></Link>
-                <Link href="/contact" className="btn">Contact</Link>
-              </div>
+            <div className="col-span-12 lg:col-span-4 lg:col-start-9 flex flex-col sm:flex-row gap-4 lg:justify-end">
+              <Link href="/projecten" className="btn">Bekijk het werk <ArrowRight className="h-3.5 w-3.5" /></Link>
+              <Link href="/contact" className="btn">Contact</Link>
             </div>
           </div>
         </div>
 
-        {/* Scroll cue */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-ink-300 animate-pulse">
           <ArrowDown className="h-4 w-4" />
         </div>
       </section>
 
-      {/* ═══════════════════════════════ INTRO — grote statement ═══ */}
+      {/* Introductie */}
       <section className="py-32 lg:py-48 border-b border-ink-700/40">
         <div className="container-x grid grid-cols-12 gap-8 lg:gap-16 items-start">
           <div className="col-span-12 lg:col-span-4">
@@ -76,7 +77,7 @@ export default function HomePage() {
               <span className="italic font-light text-sand-300">Één handschrift door het hele project.</span>
             </h2>
             <p className="mt-12 text-[17px] lg:text-[19px] leading-[1.75] text-ink-100 max-w-2xl">
-              Angelo Alings bouwt en verbouwt vanuit Vinkeveen door heel de Randstad — nieuwbouw, renovatie, restauratie en maatwerk interieur. Één ploeg, één planning, één aanspreekpunt. Geen wisselende onderaannemers, geen tussenlaag van projectmanagers.
+              Angelo Alings bouwt en verbouwt vanuit Vinkeveen door heel de Randstad. Nieuwbouw, renovatie, restauratie en maatwerk interieur. Één ploeg, één planning, één aanspreekpunt. Geen wisselende onderaannemers, geen tussenlaag van projectmanagers.
             </p>
             <div className="mt-10">
               <Link href="/over" className="btn pl-0">Meer over Angelo <ArrowRight className="h-3.5 w-3.5" /></Link>
@@ -85,18 +86,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════ SELECTED WORK — grote beelden ═══ */}
+      {/* Selected work */}
       <section>
         {featured.map((p, i) => (
           <Link key={p!.src} href="/projecten" className="group block relative">
             <div className="relative w-full h-[70vh] min-h-[500px] lg:h-[85vh] overflow-hidden zoom-on-hover bg-ink-800">
-              <Image
-                src={p!.src}
-                alt={p!.caption}
-                fill
-                sizes="100vw"
-                className="object-cover"
-              />
+              <Image src={p!.src} alt={p!.caption} fill sizes="100vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent" />
             </div>
             <div className="container-x">
@@ -105,9 +100,7 @@ export default function HomePage() {
                   <div className="meta text-sand-300 mb-4">
                     {String(i + 1).padStart(2, '0')} / {String(featured.length).padStart(2, '0')} · {categoryLabels[p!.category]}
                   </div>
-                  <h3 className="h-section text-ink-50 max-w-3xl">
-                    {p!.caption}
-                  </h3>
+                  <h3 className="h-section text-ink-50 max-w-3xl">{p!.caption}</h3>
                 </div>
                 <div className="col-span-12 lg:col-span-4 lg:pt-10 flex lg:justify-end items-end">
                   <span className="inline-flex items-center gap-3 font-display text-[11.5px] tracking-[0.24em] uppercase text-sand-300 group-hover:text-sand-100 transition-colors">
@@ -121,7 +114,7 @@ export default function HomePage() {
         ))}
       </section>
 
-      {/* ═══════════════════════════════ 4 CATEGORIES — full bleed foto's per categorie ═══ */}
+      {/* Categorieen */}
       <section className="border-t border-ink-700/40 py-24 lg:py-32">
         <div className="container-x">
           <div className="grid grid-cols-12 gap-8 mb-16 lg:mb-20">
@@ -147,7 +140,7 @@ export default function HomePage() {
                   </div>
                   <div className="mt-6 flex items-baseline justify-between gap-6">
                     <div>
-                      <div className="meta text-sand-300">{String(i + 1).padStart(2, '0')} — {s.label}</div>
+                      <div className="meta text-sand-300">{String(i + 1).padStart(2, '0')} · {s.label}</div>
                       <h3 className="h-block mt-3 text-ink-50 group-hover:text-sand-300 transition-colors">{s.headline.split('.')[0]}.</h3>
                     </div>
                     <span className="text-ink-300 group-hover:text-sand-300 transition-colors">
@@ -162,7 +155,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════ OVER ANGELO ═══ */}
+      {/* Over Angelo */}
       <section className="border-t border-ink-700/40 py-24 lg:py-32">
         <div className="container-x grid grid-cols-12 gap-8 lg:gap-16 items-center">
           <div className="col-span-12 lg:col-span-6 order-2 lg:order-1">
@@ -177,7 +170,7 @@ export default function HomePage() {
             </h2>
             <div className="mt-10 space-y-6 text-[16px] lg:text-[17px] leading-[1.8] text-ink-100 max-w-lg">
               <p>
-                TOPWOOD is de eigen ploeg van Angelo Alings — een bouwbedrijf zonder tussenlaag, zonder verrassingen. Wat je bespreekt is wat je krijgt.
+                TOPWOOD is de eigen ploeg van Angelo Alings. Een bouwbedrijf zonder tussenlaag, zonder verrassingen. Wat je bespreekt is wat je krijgt.
               </p>
               <p>
                 Van houtskelet dakopbouw tot maatwerk boekenkast, van complete badkamer tot chevron parket. Elke lijn getrokken met dezelfde precisie.
@@ -190,7 +183,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════ CTA ═══ */}
+      {/* CTA */}
       <section className="relative overflow-hidden border-t border-ink-700/40">
         <div className="absolute inset-0">
           <Image src="/images/topwood-45.jpg" alt="" fill className="object-cover opacity-[0.12]" />

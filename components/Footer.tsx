@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { business } from '@/content/business'
 
 export function Footer() {
@@ -6,8 +7,15 @@ export function Footer() {
     <footer className="mt-32 border-t border-ink-700/50">
       <div className="container-x py-20 grid grid-cols-1 md:grid-cols-12 gap-14">
         <div className="md:col-span-5">
-          <div className="font-display font-semibold text-2xl tracking-[0.24em] text-ink-50">TOPWOOD</div>
-          <div className="mt-2 font-display text-[10.5px] tracking-[0.28em] uppercase text-ink-300">Bouwbedrijf · {business.address.city}</div>
+          <Link href="/" aria-label="Topwood home" className="inline-block">
+            <Image
+              src="/logo/topwood-banner.jpg"
+              alt="Topwood bouwbedrijf"
+              width={320}
+              height={147}
+              className="h-16 w-auto opacity-95"
+            />
+          </Link>
           <p className="mt-8 text-[14.5px] leading-[1.75] text-ink-200 max-w-md">
             {business.shortDescription}
           </p>
@@ -38,9 +46,7 @@ export function Footer() {
               {business.address.street} · {business.address.postalCode} {business.address.city}
             </li>
             {business.email && (
-              <li>
-                <a href={`mailto:${business.email}`} className="hover:text-sand-300 link-line">{business.email}</a>
-              </li>
+              <li><a href={`mailto:${business.email}`} className="hover:text-sand-300 link-line">{business.email}</a></li>
             )}
             {business.social.instagram && (
               <li>
@@ -53,7 +59,7 @@ export function Footer() {
 
           <div className="eyebrow mt-10 mb-3">Werkgebied</div>
           <div className="text-[12.5px] text-ink-300 leading-relaxed">
-            {business.region.cities.slice(0, 8).join(' · ')} — {business.region.province}
+            {business.region.cities.slice(0, 8).join(' · ')} · {business.region.province}
           </div>
         </div>
       </div>

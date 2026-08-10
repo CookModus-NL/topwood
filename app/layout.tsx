@@ -6,12 +6,12 @@ import { Footer } from '@/components/Footer'
 
 export const viewport: Viewport = { themeColor: '#0A0A0A' }
 
-const TITLE = 'TOPWOOD — Bouwbedrijf voor nieuwbouw, renovatie, restauratie en interieur'
+const TITLE = 'TOPWOOD · Bouwbedrijf voor nieuwbouw, renovatie, restauratie en interieur'
 const DESC = business.longDescription
 
 export const metadata: Metadata = {
   metadataBase: new URL(business.url),
-  title: { default: TITLE, template: '%s — TOPWOOD' },
+  title: { default: TITLE, template: '%s · TOPWOOD' },
   description: DESC,
   keywords: [
     'bouwbedrijf', 'bouwbedrijf West-Brabant', 'bouwbedrijf Breda',

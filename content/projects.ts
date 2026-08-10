@@ -1,5 +1,5 @@
 /**
- * TOPWOOD portfolio — 53 echte project foto's van Angelo's werk.
+ * TOPWOOD portfolio. 53 echte project foto's van Angelo's werk.
  * Photo gallery model: elke foto krijgt een categorie en korte caption op
  * basis van wat visueel te zien is. Geen verzonnen project stories.
  */
@@ -44,7 +44,7 @@ export const portfolioPhotos: PortfolioPhoto[] = [
   { src: '/images/topwood-09.jpg', category: 'interieur', caption: 'Zwart tegelwerk badkamer' },
   { src: '/images/topwood-14.jpg', category: 'interieur', caption: 'Luxe badkamer marble & zwart' },
 
-  // Klassiek interieur — chevron vloer, paneelwerk
+  // Klassiek interieur
   { src: '/images/topwood-10.jpg', category: 'interieur', caption: 'Klassieke gang met paneelwerk' },
   { src: '/images/topwood-38.jpg', category: 'interieur', caption: 'Zwarte deuren en herringbone vloer' },
   { src: '/images/topwood-37.jpg', category: 'interieur', caption: 'Woonkamer met chevron eiken' },
@@ -58,7 +58,7 @@ export const portfolioPhotos: PortfolioPhoto[] = [
   { src: '/images/topwood-22.jpg', category: 'interieur', caption: 'Verweerde afwerking TV-wand' },
   { src: '/images/topwood-23.jpg', category: 'interieur', caption: 'TV-wand met haard opgeleverd' },
 
-  // Boekenkasten (signature — geframeed met verweerde achterwand)
+  // Boekenkasten (signature met verweerde achterwand)
   { src: '/images/topwood-17.jpg', category: 'interieur', caption: 'Boekenkast ruwbouw MDF' },
   { src: '/images/topwood-18.jpg', category: 'interieur', caption: 'Complete kastenwand grid' },
   { src: '/images/topwood-45.jpg', category: 'interieur', caption: 'Boekenkast met verweerde achterwand' },

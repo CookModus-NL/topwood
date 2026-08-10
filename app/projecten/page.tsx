@@ -21,7 +21,7 @@ export default function ProjectenPage() {
             Werk<br /><span className="italic font-light text-sand-300">in beeld.</span>
           </h1>
           <p className="mt-10 text-[17px] leading-[1.7] text-ink-100 max-w-xl">
-            Selectie van recent werk uit Vinkeveen en heel de Randstad — van houtskelet dakopbouw tot maatwerk boekenkast, van complete badkamer tot chevron parket.
+            Selectie van recent werk uit Vinkeveen en heel de Randstad. Van houtskelet dakopbouw tot maatwerk boekenkast, van complete badkamer tot chevron parket.
           </p>
         </div>
       </section>
@@ -34,7 +34,7 @@ export default function ProjectenPage() {
             <div className="container-x">
               <div className="grid grid-cols-12 gap-8 mb-12 lg:mb-16 items-baseline">
                 <div className="col-span-12 lg:col-span-6">
-                  <div className="eyebrow">{String(categoryOrder.indexOf(cat) + 1).padStart(2, '0')} — {photos.length} projecten</div>
+                  <div className="eyebrow">{String(categoryOrder.indexOf(cat) + 1).padStart(2, '0')} · {photos.length} projecten</div>
                   <h2 className="h-section mt-6 text-ink-50">{categoryLabels[cat]}</h2>
                 </div>
                 <div className="col-span-12 lg:col-span-4 lg:col-start-9 lg:pt-8">

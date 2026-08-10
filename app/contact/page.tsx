@@ -20,7 +20,7 @@ export default function ContactPage() {
               Vertel wat je<br /><span className="italic font-light text-sand-300">wilt bouwen.</span>
             </h1>
             <p className="mt-10 text-[17px] leading-[1.75] text-ink-100 max-w-lg">
-              Nieuwbouw, verbouwing, restauratie, interieur — of alles tegelijk. Beschrijf kort wat je in gedachten hebt, dan neemt Angelo binnen twee dagen contact op.
+              Nieuwbouw, verbouwing, restauratie, interieur. Of alles tegelijk. Beschrijf kort wat je in gedachten hebt, dan neemt Angelo binnen twee dagen contact op.
             </p>
 
             <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">

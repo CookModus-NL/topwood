@@ -1,5 +1,5 @@
 /**
- * TOPWOOD — bouwbedrijf van Angelo Alings.
+ * TOPWOOD. Bouwbedrijf van Angelo Alings.
  * Premium interieurbouw + renovatie + houtwerk. Vinkeveen (Utrecht).
  */
 
@@ -12,7 +12,7 @@ export const business = {
   shortDescription:
     'Premium bouwbedrijf voor nieuwbouw, renovatie, restauratie en maatwerk interieur. Van ruwbouw tot laatste plint, één ploeg door het hele project.',
   longDescription:
-    'TOPWOOD is het bouwbedrijf van Angelo Alings. Wij bouwen nieuw, renoveren oud, restaureren monumentaal en werken uit tot in het interieurdetail — inclusief maatwerk boekenkasten, kookeilanden, epoxy bladen en badkamers op maat. Eén ploeg, één planning, één aanspreekpunt — van fundering tot laatste plint.',
+    'TOPWOOD is het bouwbedrijf van Angelo Alings. Wij bouwen nieuw, renoveren oud, restaureren monumentaal en werken uit tot in het interieurdetail. Inclusief maatwerk boekenkasten, kookeilanden, epoxy bladen en badkamers op maat. Eén ploeg, één planning, één aanspreekpunt, van fundering tot laatste plint.',
 
   categories: ['Nieuwbouw', 'Renovatie', 'Restauratie', 'Interieur'] as const,
 
