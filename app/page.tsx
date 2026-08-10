@@ -11,7 +11,7 @@ export default function HomePage() {
 
   // Featured projecten: uitgekozen sterke beelden
   const featured = [
-    portfolioPhotos.find(p => p.src === '/images/topwood-23.jpg'), // TV-wand met haard opgeleverd
+    portfolioPhotos.find(p => p.src === '/images/topwood-10.jpg'), // Klassieke gang paneelwerk (portrait, past goed in 70vh)
     portfolioPhotos.find(p => p.src === '/images/topwood-14.jpg'), // Luxe badkamer
     portfolioPhotos.find(p => p.src === '/images/topwood-45.jpg'), // Boekenkast verweerd
     portfolioPhotos.find(p => p.src === '/images/topwood-01.jpg'), // Zwarte gevel
