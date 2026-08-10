@@ -14,14 +14,14 @@ const categoryOrder: (keyof typeof photosByCategory)[] = ['interieur', 'renovati
 export default function ProjectenPage() {
   return (
     <>
-      <section className="pt-40 pb-24 lg:pt-48 lg:pb-32 border-b border-ink-700/40">
+      <section className="section-dark py-24 lg:py-32">
         <div className="container-x">
-          <div className="eyebrow">Portfolio · {portfolioPhotos.length} projecten</div>
-          <h1 className="h-hero mt-8 text-ink-50 max-w-5xl">
-            Werk<br /><span className="italic font-light text-sand-300">in beeld.</span>
+          <div className="eyebrow text-sand-300">Portfolio · {portfolioPhotos.length} projecten</div>
+          <h1 className="h-hero mt-6 text-ink-50 max-w-3xl">
+            Selectie van recent werk.
           </h1>
-          <p className="mt-10 text-[17px] leading-[1.7] text-ink-100 max-w-xl">
-            Selectie van recent werk uit Vinkeveen en heel de Randstad. Van houtskelet dakopbouw tot maatwerk boekenkast, van complete badkamer tot chevron parket.
+          <p className="mt-6 text-[17px] leading-[1.7] text-ink-300 max-w-xl">
+            Van houtskelet dakopbouw tot maatwerk boekenkast, van complete badkamer tot chevron parket.
           </p>
         </div>
       </section>
@@ -30,28 +30,28 @@ export default function ProjectenPage() {
         const photos = photosByCategory[cat]
         if (!photos?.length) return null
         return (
-          <section key={cat} className="py-20 lg:py-28 border-b border-ink-700/40">
+          <section key={cat} className="section-paper py-20 lg:py-28 border-b border-ink-100 last:border-none">
             <div className="container-x">
-              <div className="grid grid-cols-12 gap-8 mb-12 lg:mb-16 items-baseline">
-                <div className="col-span-12 lg:col-span-6">
-                  <div className="eyebrow">{String(categoryOrder.indexOf(cat) + 1).padStart(2, '0')} · {photos.length} projecten</div>
-                  <h2 className="h-section mt-6 text-ink-50">{categoryLabels[cat]}</h2>
+              <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
+                <div>
+                  <div className="eyebrow">{photos.length} projecten</div>
+                  <h2 className="h-section mt-4 text-ink-900">{categoryLabels[cat]}</h2>
                 </div>
-                <div className="col-span-12 lg:col-span-4 lg:col-start-9 lg:pt-8">
-                  <Link href={`/diensten/${cat}`} className="btn pl-0">Over {cat} <ArrowRight className="h-3.5 w-3.5" /></Link>
-                </div>
+                <Link href={`/diensten/${cat}`} className="btn btn-outline">Over {cat} <ArrowRight className="h-4 w-4"/></Link>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3 lg:gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
                 {photos.map((p) => (
-                  <figure key={p.src} className="group relative aspect-[4/5] overflow-hidden bg-ink-800 zoom-on-hover">
-                    <Image src={p.src} alt={`Topwood ${categoryLabels[p.category]} project ${getPhotoNumber(p)}`} fill
-                           sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                           className="object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <figcaption className="absolute inset-x-0 bottom-0 p-4 lg:p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <span className="font-display text-[11px] tracking-[0.24em] uppercase text-sand-300">{categoryLabels[p.category]} {getPhotoNumber(p)}</span>
-                    </figcaption>
-                  </figure>
+                  <div key={p.src} className="group zoom-parent">
+                    <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-ink-100">
+                      <Image src={p.src} alt={`Topwood ${categoryLabels[p.category]} project ${getPhotoNumber(p)}`} fill
+                             sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                             className="object-cover zoom" />
+                    </div>
+                    <div className="mt-3 flex items-baseline justify-between">
+                      <span className="font-display text-[11px] tracking-[0.22em] uppercase text-ink-500 group-hover:text-sand-400 transition-colors">{categoryLabels[p.category]}</span>
+                      <span className="font-display text-[11px] tracking-[0.14em] text-ink-400">{getPhotoNumber(p)}</span>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -59,15 +59,12 @@ export default function ProjectenPage() {
         )
       })}
 
-      <section className="py-32 lg:py-48">
-        <div className="container-x text-center">
-          <div className="eyebrow">Contact</div>
-          <h2 className="h-section mt-6 text-ink-50 max-w-3xl mx-auto">
-            Volgend project?<br /><span className="italic font-light text-sand-300">Bel Angelo direct.</span>
+      <section className="section-dark py-24 lg:py-32 text-center">
+        <div className="container-x">
+          <h2 className="h-section text-ink-50 max-w-3xl mx-auto">
+            Volgend project<br/><span className="text-sand-300">is het jouwe?</span>
           </h2>
-          <div className="mt-10">
-            <Link href="/contact" className="btn">Aanvraag doen <ArrowRight className="h-3.5 w-3.5" /></Link>
-          </div>
+          <Link href="/contact" className="btn btn-primary mt-10 inline-flex">Aanvraag doen <ArrowRight className="h-4 w-4"/></Link>
         </div>
       </section>
     </>

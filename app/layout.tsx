@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { business } from '@/content/business'
+import { UtilityBar } from '@/components/UtilityBar'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { WhatsappFloat } from '@/components/WhatsappFloat'
 
 export const viewport: Viewport = { themeColor: '#0A0A0A' }
 
@@ -14,11 +16,11 @@ export const metadata: Metadata = {
   title: { default: TITLE, template: '%s · TOPWOOD' },
   description: DESC,
   keywords: [
-    'bouwbedrijf', 'bouwbedrijf West-Brabant', 'bouwbedrijf Breda',
-    'nieuwbouw Breda', 'renovatie Breda', 'restauratie Breda', 'interieurbouw Breda',
-    'aannemer Breda', 'aannemer West-Brabant', 'aannemer Noord-Brabant',
-    'verbouwing Breda', 'uitbouw Breda', 'dakopbouw Breda',
-    'TOPWOOD', 'Angelo Alings', 'bouwbedrijf TOPWOOD',
+    'bouwbedrijf', 'bouwbedrijf Vinkeveen', 'bouwbedrijf Utrecht',
+    'nieuwbouw Vinkeveen', 'renovatie Vinkeveen', 'restauratie Vinkeveen',
+    'interieurbouw Utrecht', 'aannemer Vinkeveen', 'aannemer De Ronde Venen',
+    'verbouwing Utrecht', 'uitbouw Randstad', 'dakopbouw Randstad',
+    'TOPWOOD', 'Angelo Alings',
   ],
   authors: [{ name: business.ownerFullName }],
   creator: business.name,
@@ -32,16 +34,12 @@ export const metadata: Metadata = {
     siteName: business.name,
     title: TITLE,
     description: DESC,
+    images: [{ url: `${business.url}/logo/topwood-banner.jpg`, width: 2048, height: 943, alt: 'TOPWOOD Bouwbedrijf' }],
   },
   twitter: { card: 'summary_large_image', title: TITLE, description: DESC },
   alternates: { canonical: business.url, languages: { 'nl-NL': business.url } },
   category: 'business',
-  other: {
-    'geo.region': 'NL-NB',
-    'geo.placename': business.address.city,
-    'DC.language': 'nl',
-    'DC.publisher': business.name,
-  },
+  other: { 'geo.region': 'NL-UT', 'geo.placename': business.address.city },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -50,52 +48,37 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     '@type': ['GeneralContractor', 'LocalBusiness', 'HomeAndConstructionBusiness'],
     '@id': `${business.url}/#business`,
     name: business.name,
-    alternateName: business.legalName,
     description: business.longDescription,
-    slogan: business.tagline,
     url: business.url,
-    logo: `${business.url}/logo/topwood-tan-on-dark.svg`,
+    logo: `${business.url}/logo/topwood-banner.jpg`,
     email: business.email,
-    telephone: business.phoneE164 || undefined,
+    telephone: business.phoneE164,
     foundingDate: business.founded,
-    knowsLanguage: ['nl-NL'],
     address: {
       '@type': 'PostalAddress',
+      streetAddress: business.address.street,
+      postalCode: business.address.postalCode,
       addressLocality: business.address.city,
       addressRegion: business.address.province,
       addressCountry: business.address.country,
     },
     areaServed: business.region.cities.map((c) => ({ '@type': 'City', name: c })),
     priceRange: '€€€',
-    currenciesAccepted: 'EUR',
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Diensten',
-      itemListElement: business.categories.map((c) => ({
-        '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: c },
-      })),
-    },
-    sameAs: [business.social.instagram, business.social.facebook, business.social.linkedin].filter(Boolean),
-    founder: {
-      '@type': 'Person',
-      name: business.ownerFullName,
-      alternateName: business.ownerFirstName,
-    },
+    sameAs: [business.social.instagram].filter(Boolean),
+    founder: { '@type': 'Person', name: business.ownerFullName },
   }
 
   return (
     <html lang="nl-NL">
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessLd) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessLd) }} />
       </head>
       <body className="min-h-screen">
+        <UtilityBar />
         <Header />
         <main>{children}</main>
         <Footer />
+        <WhatsappFloat />
       </body>
     </html>
   )

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, MessageCircle, Phone, Mail, MapPin, Instagram } from 'lucide-react'
 import type { Metadata } from 'next'
 import { business } from '@/content/business'
 
@@ -12,73 +12,83 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <section className="pt-40 lg:pt-48 pb-24">
-        <div className="container-x grid grid-cols-12 gap-8 lg:gap-16">
-          <div className="col-span-12 lg:col-span-7">
-            <div className="eyebrow">Contact</div>
-            <h1 className="h-hero mt-8 text-ink-50">
-              Vertel wat je<br /><span className="italic font-light text-sand-300">wilt bouwen.</span>
-            </h1>
-            <p className="mt-10 text-[17px] leading-[1.75] text-ink-100 max-w-lg">
-              Nieuwbouw, verbouwing, restauratie, interieur. Of alles tegelijk. Beschrijf kort wat je in gedachten hebt, dan neemt Angelo binnen twee dagen contact op.
-            </p>
+      <section className="section-dark py-24 lg:py-32">
+        <div className="container-x">
+          <div className="eyebrow text-sand-300">Contact</div>
+          <h1 className="h-hero mt-6 text-ink-50 max-w-4xl">
+            Vertel wat je<br/><span className="text-sand-300">wilt bouwen.</span>
+          </h1>
+          <p className="mt-8 text-[17px] text-ink-300 max-w-2xl">
+            Nieuwbouw, verbouwing, restauratie, interieur. Of alles tegelijk. Beschrijf kort wat je in gedachten hebt, dan neemt Angelo binnen twee dagen contact op.
+          </p>
+        </div>
+      </section>
 
-            <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
-              <div className="border-t border-sand-300 pt-6">
-                <div className="meta text-sand-300 mb-2">Direct bellen</div>
-                <a href={`tel:${business.phoneE164}`} className="font-display text-2xl lg:text-3xl tracking-[0.12em] text-ink-50 hover:text-sand-300 transition-colors block">
-                  {business.phone}
-                </a>
+      <section className="section-paper py-24 lg:py-32">
+        <div className="container-x grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Contact cards */}
+          <div className="lg:col-span-5 space-y-4">
+            <a href={`tel:${business.phoneE164}`} className="card group flex items-center gap-4 !py-5">
+              <div className="h-10 w-10 rounded-full bg-sand-100 flex items-center justify-center shrink-0"><Phone className="h-4 w-4 text-sand-600" strokeWidth={1.8}/></div>
+              <div>
+                <div className="eyebrow">Bel direct</div>
+                <div className="font-display text-lg font-semibold text-ink-900 group-hover:text-sand-400">{business.phone}</div>
               </div>
-              {business.email && (
-                <div className="border-t border-sand-300 pt-6">
-                  <div className="meta text-sand-300 mb-2">Email</div>
-                  <a href={`mailto:${business.email}`} className="text-[16px] text-ink-50 hover:text-sand-300 link-line">{business.email}</a>
-                </div>
-              )}
-              <div className="border-t border-sand-300 pt-6">
-                <div className="meta text-sand-300 mb-2">Vestiging</div>
-                <div className="text-[16px] text-ink-50 leading-relaxed">
-                  {business.address.street}<br/>
-                  {business.address.postalCode} {business.address.city}
-                </div>
-                <div className="mt-2 text-[13px] text-ink-300">Op afspraak</div>
+            </a>
+            <a href={`https://wa.me/${business.whatsapp?.replace('+','')}`} target="_blank" rel="noreferrer" className="card group flex items-center gap-4 !py-5">
+              <div className="h-10 w-10 rounded-full bg-[#25D366]/15 flex items-center justify-center shrink-0"><MessageCircle className="h-4 w-4 text-[#25D366]" strokeWidth={1.8}/></div>
+              <div>
+                <div className="eyebrow">WhatsApp</div>
+                <div className="font-display text-lg font-semibold text-ink-900 group-hover:text-sand-400">Chat met Angelo</div>
               </div>
-              <div className="border-t border-sand-300 pt-6">
-                <div className="meta text-sand-300 mb-2">Instagram</div>
-                {business.social.instagram && (
-                  <a href={business.social.instagram} target="_blank" rel="noreferrer" className="text-[16px] text-ink-50 hover:text-sand-300 link-line">
-                    @{business.social.instagramHandle}
-                  </a>
-                )}
+            </a>
+            <a href={`mailto:${business.email}`} className="card group flex items-center gap-4 !py-5">
+              <div className="h-10 w-10 rounded-full bg-sand-100 flex items-center justify-center shrink-0"><Mail className="h-4 w-4 text-sand-600" strokeWidth={1.8}/></div>
+              <div>
+                <div className="eyebrow">Email</div>
+                <div className="font-display text-[15px] text-ink-900 group-hover:text-sand-400 break-all">{business.email}</div>
+              </div>
+            </a>
+            <div className="card flex items-center gap-4 !py-5">
+              <div className="h-10 w-10 rounded-full bg-sand-100 flex items-center justify-center shrink-0"><MapPin className="h-4 w-4 text-sand-600" strokeWidth={1.8}/></div>
+              <div>
+                <div className="eyebrow">Vestiging</div>
+                <div className="font-display text-[15px] text-ink-900">{business.address.street}, {business.address.postalCode} {business.address.city}</div>
+                <div className="mt-1 text-[12px] text-ink-500">Op afspraak</div>
               </div>
             </div>
+            {business.social.instagram && (
+              <a href={business.social.instagram} target="_blank" rel="noreferrer" className="card group flex items-center gap-4 !py-5">
+                <div className="h-10 w-10 rounded-full bg-sand-100 flex items-center justify-center shrink-0"><Instagram className="h-4 w-4 text-sand-600" strokeWidth={1.8}/></div>
+                <div>
+                  <div className="eyebrow">Instagram</div>
+                  <div className="font-display text-[15px] text-ink-900 group-hover:text-sand-400">@{business.social.instagramHandle}</div>
+                </div>
+              </a>
+            )}
           </div>
 
-          <div className="col-span-12 lg:col-span-5">
-            <div className="relative aspect-[4/5] overflow-hidden bg-ink-800">
-              <Image src="/images/topwood-23.jpg" alt="Recent werk" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" />
-            </div>
-
-            <form className="mt-8 space-y-5">
-              <Field label="Naam" name="naam" required />
-              <Field label="Email" name="email" type="email" required />
+          {/* Form */}
+          <div className="lg:col-span-7">
+            <form className="card space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <Field label="Naam" name="naam" required />
+                <Field label="Email" name="email" type="email" required />
+              </div>
               <Field label="Telefoon" name="telefoon" />
               <Field label="Categorie" name="categorie" placeholder="Nieuwbouw, renovatie, restauratie, interieur…" />
               <Field label="Wat wil je bouwen?" name="bericht" as="textarea" rows={5} required />
-              <button type="submit" className="btn w-full sm:w-auto pl-0">Aanvraag versturen <ArrowRight className="h-3.5 w-3.5"/></button>
-              <p className="text-[11px] text-ink-300">Reactie meestal binnen 2 werkdagen.</p>
+              <button type="submit" className="btn btn-primary">Aanvraag versturen <ArrowRight className="h-4 w-4"/></button>
+              <p className="text-[12px] text-ink-500">Reactie meestal binnen 2 werkdagen.</p>
             </form>
           </div>
         </div>
       </section>
 
-      <section className="py-16 border-t border-ink-700/40">
+      <section className="section-sand py-14">
         <div className="container-x text-center">
-          <div className="text-[12.5px] font-display tracking-[0.28em] uppercase text-ink-300">
-            Werkgebied vanuit {business.address.city}
-          </div>
-          <div className="mt-4 text-[13.5px] text-ink-200 max-w-2xl mx-auto">
+          <div className="eyebrow">Werkgebied vanuit {business.address.city}</div>
+          <div className="mt-4 text-[13.5px] text-ink-700 max-w-2xl mx-auto">
             {business.region.cities.join(' · ')}
           </div>
         </div>
@@ -91,8 +101,8 @@ function Field({ label, name, type = 'text', required = false, placeholder, as, 
   const Tag = as === 'textarea' ? 'textarea' : 'input'
   return (
     <div>
-      <label className="block font-display text-[10.5px] tracking-[0.24em] uppercase text-sand-300 mb-2">
-        {label}{required && <span className="text-ink-500"> *</span>}
+      <label className="block font-display text-[11px] tracking-[0.2em] uppercase text-ink-500 mb-2">
+        {label}{required && <span className="text-ink-400"> *</span>}
       </label>
       <Tag
         name={name}
@@ -100,7 +110,7 @@ function Field({ label, name, type = 'text', required = false, placeholder, as, 
         rows={rows}
         placeholder={placeholder}
         required={required}
-        className="w-full bg-transparent border-b border-ink-700 focus:border-sand-300 focus:outline-none px-0 py-3 text-[15px] text-ink-50 placeholder:text-ink-500 transition-colors"
+        className="w-full bg-paper border border-ink-200 rounded-lg focus:border-sand-400 focus:ring-2 focus:ring-sand-100 focus:outline-none px-4 py-3 text-[15px] text-ink-900 placeholder:text-ink-400 transition-colors"
       />
     </div>
   )
