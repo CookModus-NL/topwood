@@ -25,7 +25,7 @@ export default function OverPage() {
           </div>
           <div className="lg:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-ink-800">
-              <Image src="/images/topwood-15.jpg" alt="Angelo aan het werk" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" priority />
+              <Image src="/images/werk-15.jpg" alt="Angelo aan het werk" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" priority />
             </div>
           </div>
         </div>

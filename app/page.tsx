@@ -142,7 +142,7 @@ export default function HomePage() {
       <section className="section-sand py-24 lg:py-32">
         <div className="container-x grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="relative aspect-[4/5] max-w-md mx-auto lg:mx-0 overflow-hidden rounded-lg zoom-parent bg-ink-100">
-            <Image src="/images/topwood-15.jpg" alt="Angelo aan het werk" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover zoom" />
+            <Image src="/images/werk-15.jpg" alt="Angelo aan het werk" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover zoom" />
           </div>
           <div>
             <div className="eyebrow">De bouwer</div>
