@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { ArrowUpRight, ArrowRight, ArrowDown } from 'lucide-react'
 import { business } from '@/content/business'
 import { services } from '@/content/services'
-import { portfolioPhotos, photosByCategory, categoryLabels } from '@/content/projects'
+import { portfolioPhotos, photosByCategory, categoryLabels, getPhotoNumber } from '@/content/projects'
 
 export default function HomePage() {
   const heroPhoto = portfolioPhotos.find(p => p.src === '/images/topwood-23.jpg') || portfolioPhotos[0]
@@ -18,9 +18,9 @@ export default function HomePage() {
   return (
     <>
       {/* Logo banner centered bovenaan */}
-      <section className="pt-32 lg:pt-40 pb-16 lg:pb-24">
+      <section className="pt-28 lg:pt-32 pb-8 lg:pb-12">
         <div className="container-x flex justify-center">
-          <div className="reveal w-full max-w-4xl">
+          <div className="reveal w-full max-w-md">
             <Image
               src="/logo/topwood-banner.jpg"
               alt="Bouwbedrijf Topwood, wij maken alles"
@@ -37,7 +37,7 @@ export default function HomePage() {
       <section className="relative h-[85vh] min-h-[600px] overflow-hidden">
         <Image
           src={heroPhoto!.src}
-          alt={heroPhoto!.caption}
+          alt="Topwood recent werk"
           fill priority
           sizes="100vw"
           className="object-cover"
@@ -91,7 +91,7 @@ export default function HomePage() {
         {featured.map((p, i) => (
           <Link key={p!.src} href="/projecten" className="group block relative">
             <div className="relative w-full h-[70vh] min-h-[500px] lg:h-[85vh] overflow-hidden zoom-on-hover bg-ink-800">
-              <Image src={p!.src} alt={p!.caption} fill sizes="100vw" className="object-cover" />
+              <Image src={p!.src} alt={`Topwood ${p!.category} project`} fill sizes="100vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent" />
             </div>
             <div className="container-x">
@@ -100,7 +100,7 @@ export default function HomePage() {
                   <div className="meta text-sand-300 mb-4">
                     {String(i + 1).padStart(2, '0')} / {String(featured.length).padStart(2, '0')} · {categoryLabels[p!.category]}
                   </div>
-                  <h3 className="h-section text-ink-50 max-w-3xl">{p!.caption}</h3>
+                  <h3 className="h-section text-ink-50 max-w-3xl">{categoryLabels[p!.category]} {getPhotoNumber(p!)}</h3>
                 </div>
                 <div className="col-span-12 lg:col-span-4 lg:pt-10 flex lg:justify-end items-end">
                   <span className="inline-flex items-center gap-3 font-display text-[11.5px] tracking-[0.24em] uppercase text-sand-300 group-hover:text-sand-100 transition-colors">
@@ -134,7 +134,7 @@ export default function HomePage() {
                 <Link key={s.slug} href={`/diensten/${s.slug}`} className="group block">
                   <div className="relative aspect-[4/5] overflow-hidden bg-ink-800 zoom-on-hover">
                     {preview && (
-                      <Image src={preview.src} alt={preview.caption} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+                      <Image src={preview.src} alt={`Topwood ${s.label} project`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-ink-950/60 to-transparent" />
                   </div>

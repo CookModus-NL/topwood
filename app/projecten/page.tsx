@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import type { Metadata } from 'next'
-import { portfolioPhotos, photosByCategory, categoryLabels } from '@/content/projects'
+import { portfolioPhotos, photosByCategory, categoryLabels, getPhotoNumber } from '@/content/projects'
 
 export const metadata: Metadata = {
   title: 'Werk',
@@ -44,12 +44,12 @@ export default function ProjectenPage() {
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3 lg:gap-4">
                 {photos.map((p) => (
                   <figure key={p.src} className="group relative aspect-[4/5] overflow-hidden bg-ink-800 zoom-on-hover">
-                    <Image src={p.src} alt={p.caption} fill
+                    <Image src={p.src} alt={`Topwood ${categoryLabels[p.category]} project ${getPhotoNumber(p)}`} fill
                            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                            className="object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <figcaption className="absolute inset-x-0 bottom-0 p-4 lg:p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <span className="font-display text-[13px] text-sand-300 font-medium">{p.caption}</span>
+                      <span className="font-display text-[11px] tracking-[0.24em] uppercase text-sand-300">{categoryLabels[p.category]} {getPhotoNumber(p)}</span>
                     </figcaption>
                   </figure>
                 ))}

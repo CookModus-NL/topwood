@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { ArrowRight, Check } from 'lucide-react'
 import type { Metadata } from 'next'
 import { services, servicesBySlug } from '@/content/services'
-import { photosByCategory } from '@/content/projects'
+import { photosByCategory, categoryLabels, getPhotoNumber } from '@/content/projects'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -33,7 +33,7 @@ export default async function ServicePage({ params }: Props) {
       <section className="relative h-[70vh] min-h-[600px] overflow-hidden">
         {hero && (
           <>
-            <Image src={hero.src} alt={hero.caption} fill priority className="object-cover" />
+            <Image src={hero.src} alt={`Topwood ${s.label} project`} fill priority className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-b from-ink-950/40 via-transparent to-ink-950/90" />
           </>
         )}
@@ -92,10 +92,10 @@ export default async function ServicePage({ params }: Props) {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-4">
               {catPhotos.slice(0, 6).map((p) => (
                 <div key={p.src} className="group relative aspect-[4/5] overflow-hidden bg-ink-800 zoom-on-hover">
-                  <Image src={p.src} alt={p.caption} fill sizes="(max-width: 768px) 50vw, 33vw" className="object-cover" />
+                  <Image src={p.src} alt={`Topwood ${s.label} project ${getPhotoNumber(p)}`} fill sizes="(max-width: 768px) 50vw, 33vw" className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="text-[12.5px] text-sand-300 font-display">{p.caption}</div>
+                    <div className="text-[11px] font-display tracking-[0.24em] uppercase text-sand-300">{s.label} {getPhotoNumber(p)}</div>
                   </div>
                 </div>
               ))}
@@ -118,7 +118,7 @@ export default async function ServicePage({ params }: Props) {
                 <Link key={o.slug} href={`/diensten/${o.slug}`} className="group block">
                   <div className="relative aspect-[3/4] overflow-hidden bg-ink-800 zoom-on-hover">
                     {oPhoto && (
-                      <Image src={oPhoto.src} alt={oPhoto.caption} fill sizes="33vw" className="object-cover" />
+                      <Image src={oPhoto.src} alt={`Topwood ${o.label} project`} fill sizes="33vw" className="object-cover" />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 to-transparent" />
                     <div className="absolute inset-x-0 bottom-0 p-6">
